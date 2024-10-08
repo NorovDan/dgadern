@@ -121,7 +121,7 @@ async def promisify(func, *args):
     return result
 
 async def main():
-    file_name = '1-promisify.py'  # Убедитесь, что файл существует
+    file_name = '1-promisify.py'  
     data = await promisify(read_file, file_name)
     print(f'File "{file_name}" size: {len(data)}')
 
