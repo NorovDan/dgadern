@@ -103,3 +103,30 @@ queue['enq']('tre')
 while queue['cnt'](): 
 	print(queue['deq']())
 ```
+
+# Promisify
+
+```python
+import asyncio
+from concurrent.futures import ThreadPoolExecutor
+
+def read_file(file_name):
+    with open(file_name, 'r') as f:
+        return f.read()
+
+async def promisify(func, *args):
+    loop = asyncio.get_event_loop()
+    with ThreadPoolExecutor() as pool:
+        result = await loop.run_in_executor(pool, func, *args)
+    return result
+
+async def main():
+    file_name = '1-promisify.py'  # Убедитесь, что файл существует
+    data = await promisify(read_file, file_name)
+    print(f'File "{file_name}" size: {len(data)}')
+
+if __name__ == '__main__':
+    asyncio.run(main())
+
+```
+
