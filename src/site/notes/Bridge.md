@@ -42,7 +42,6 @@ class ImageBarRenderer(BarRenderer):
         return Image.new("RGB", (width, height), color="white")
 
     def render_caption(self, caption):
-        # Здесь можно добавить код для рендеринга заголовка на изображении, если нужно
         pass
 
     def render_bar(self, draw, x0, y0, x1, y1, color):
@@ -77,7 +76,7 @@ class BarCharter:
 
             filename = os.path.join(tempfile.gettempdir(), re.sub(r"W+", "_", caption) + ".png")
             image.save(filename)
-            print("Изображение сохранено по пути:", filename)
+            print("Изображение сохранено по данному пути:", filename)
 
 def main():
     pairs = (("Mon", 16), ("Tue", 17), ("Wed", 19), ("Thu", 22),
